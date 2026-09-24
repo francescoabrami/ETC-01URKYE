@@ -33,6 +33,7 @@ jobs:
         with:
           root_file: "Fisica-II/main.tex"
           texlive_version: "2023"
+          work_in_root_file_dir: true
 
       # --------------------------------------------------
       # Compile Elettrotecnica
@@ -43,6 +44,7 @@ jobs:
         with:
           root_file: "Elettrotecnica/main.tex"
           texlive_version: "2023"
+          work_in_root_file_dir: true
 
 
       # --------------------------------------------------
