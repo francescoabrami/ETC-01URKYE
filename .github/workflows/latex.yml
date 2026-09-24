@@ -3,7 +3,7 @@ name: Build LaTeX PDFs and Release
 on:
   push:
     paths:
-      - "Fisica II/**"
+      - "Fisica-II/**"
       - "Elettrotecnica/**"
       - "common/**"
 
@@ -51,7 +51,7 @@ jobs:
 
       - name: Prepare PDFs
         run: |
-          mv "Fisica II/main.pdf" "Fisica-II.pdf"
+          mv "Fisica-II/main.pdf" "Fisica-II.pdf"
           mv "Elettrotecnica/main.pdf" "Elettrotecnica.pdf"
 
 
@@ -65,7 +65,7 @@ jobs:
         run: |
 
           FISICA_VERSION=$(grep -oP '\\def\\version\{\K[^\}]+' \
-            "Fisica II/main.tex")
+            "Fisica-II/main.tex")
 
           ELETTRO_VERSION=$(grep -oP '\\def\\version\{\K[^\}]+' \
             "Elettrotecnica/main.tex")
