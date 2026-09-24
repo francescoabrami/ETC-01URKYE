@@ -1,0 +1,108 @@
+name: Build LaTeX PDFs and Release
+
+on:
+  push:
+    paths:
+      - "Fisica II/**"
+      - "Elettrotecnica/**"
+      - "common/**"
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      # --------------------------------------------------
+      # Checkout repository
+      # --------------------------------------------------
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+
+      # --------------------------------------------------
+      # Compile Fisica II
+      # --------------------------------------------------
+
+      - name: Compile Fisica II
+        uses: xu-cheng/latex-action@v4
+        with:
+          root_file: "Fisica II/main.tex"
+          texlive_version: "2023"
+
+
+      # --------------------------------------------------
+      # Compile Elettrotecnica
+      # --------------------------------------------------
+
+      - name: Compile Elettrotecnica
+        uses: xu-cheng/latex-action@v4
+        with:
+          root_file: "Elettrotecnica/main.tex"
+          texlive_version: "2023"
+
+
+      # --------------------------------------------------
+      # Rename generated PDFs
+      # --------------------------------------------------
+
+      - name: Prepare PDFs
+        run: |
+          mv "Fisica II/main.pdf" "Fisica-II.pdf"
+          mv "Elettrotecnica/main.pdf" "Elettrotecnica.pdf"
+
+
+      # --------------------------------------------------
+      # Extract versions from the two main.tex files
+      # --------------------------------------------------
+
+      - name: Extract versions
+        id: versions
+        shell: bash
+        run: |
+
+          FISICA_VERSION=$(grep -oP '\\def\\version\{\K[^\}]+' \
+            "Fisica II/main.tex")
+
+          ELETTRO_VERSION=$(grep -oP '\\def\\version\{\K[^\}]+' \
+            "Elettrotecnica/main.tex")
+
+          echo "Fisica II version: $FISICA_VERSION"
+          echo "Elettrotecnica version: $ELETTRO_VERSION"
+
+          echo "fisica=$FISICA_VERSION" >> "$GITHUB_OUTPUT"
+          echo "elettro=$ELETTRO_VERSION" >> "$GITHUB_OUTPUT"
+
+          echo "tag=vF${FISICA_VERSION}-E${ELETTRO_VERSION}" \
+            >> "$GITHUB_OUTPUT"
+
+
+      # --------------------------------------------------
+      # Create GitHub Release
+      # --------------------------------------------------
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.versions.outputs.tag }}
+
+          name: "F${{ steps.versions.outputs.fisica }} — E${{ steps.versions.outputs.elettro }}"
+
+          body: |
+            # Course Notes
+
+            ## Fisica II
+            Version: `${{ steps.versions.outputs.fisica }}`
+
+            ## Elettrotecnica
+            Version: `${{ steps.versions.outputs.elettro }}`
+
+            Compiled automatically from the repository.
+
+          files: |
+            Fisica-II.pdf
+            Elettrotecnica.pdf
