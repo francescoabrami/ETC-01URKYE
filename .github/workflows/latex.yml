@@ -31,9 +31,8 @@ jobs:
       - name: Compile Fisica II
         uses: xu-cheng/latex-action@v4
         with:
-          root_file: "Fisica II/main.tex"
+          root_file: "Fisica-II/main.tex"
           texlive_version: "2023"
-
 
       # --------------------------------------------------
       # Compile Elettrotecnica
