@@ -4,28 +4,95 @@
 
 \begin{document}
 
+
+
 \clearpage
 \thispagestyle{empty}
 \vspace*{7cm}
 \section{Esercitazioni}
 \vspace*{1.5cm}
 
+In questa sezione vengono riportate gli esercizi ed i relativi svolgimenti delle esercitazioni svolte in aula durante le lezioni del corso. Ad ogni sottosezione corrisponde una diversa esercitazione. Le esercitazioni sono contrassegnate dalla data di svolgimento e dagli argomenti trattati all'interno di essa. Ogni esercitazione è ulteriormente divisa nel numero di esercizi svolti compresivi di titolo e spiegazione. In aggiunta agli esercizi visti a lezione vengono proposti esercizi trovati su libri di testo (indicati all'inizio di questo documento) e prontamente generati attraverso \href{https://autocircuits.org/autocir_run.php?q=shuffle}{AutoCircuits}.
 
 
 \vspace*{1.5cm}
 \subsection{Esercitazione 1 - 01/10/2026}
 
+
+In questa prima esercitazione
+
+
 \vspace*{1.5cm}
 \subsubsection{Esercizio 1 - }
 \label{e1e1}
 
+
+\begin{figure}[h!]
+\begin{center}
+
+\begin{tikzpicture}[transform shape]
+	\draw (5.5, 7) to[generic, i_=$1\text{A}$] (7.75, 7);
+	\draw (8.25, 7) to[generic, i=$4\text{A}$] (10.5, 7);
+	\draw (8, 6.75) to[generic, i>^=$i_2$] (8, 4.5);
+	\draw (8, 9.5) to[generic, i^<=$2\text{A}$] (8, 7.25);
+	\draw (5.5, 7) to[generic, i_<=$8\text{A}$] (5.5, 4.5);
+	\draw (10.5, 7) to[generic] (10.5, 4.5);
+	\draw (10.5, 9.5) to[generic] (10.5, 7);
+	\node[circ] at (8, 7){};
+	\node[circ] at (5.5, 7){};
+	\node[circ] at (8, 4.5){};
+	\node[circ] at (10.5, 7){};
+	\node[circ] at (8, 9.5){};
+	\draw (5.5, 9.5) to[generic] (8, 9.5);
+	\draw (8, 9.5) to[short, i^>=$i_4$, current/distance=0.2] (10.5, 9.5);
+	\draw (5.5, 9.5) to[short, i^<=$i_1$, current/distance=0.2] (5.5, 7);
+	\draw (8, 4.5) to[short, i^<=$i_3$] (10.5, 4.5);
+	\draw (5.5, 4.5) to[short] (8, 4.5);
+	\draw (7.75, 7) to[short] (8.25, 7);
+	\draw (8, 7.25) -| (8, 6.75);
+\end{tikzpicture}
+	
+\end{center}
+\label{fe1e1}
+\caption{Circuito di bipoli analizzato al punto \ref{e1e1}}
+\end{figure}
+
 \subsubsection*{Soluzione esercizio \ref{e1e1}}
-
-
 
 \vspace*{1.5cm}
 \subsubsection{Esercizio 2 - }
 \label{e1e2}
+
+\begin{figure}[h!]
+\begin{center}
+
+\begin{tikzpicture}[transform shape]
+	\draw (5.5, 7) to[generic, v=$5\text{V}$, voltage=american] (7.75, 7);
+	\draw (8.25, 7) to[generic, v<=$2\text{V}$, voltage=american] (10.5, 7);
+	\draw (8, 6.75) to[generic, v=$v_3$, voltage=american] (8, 4.5);
+	\draw (8, 9.5) to[generic, v=$3\text{V}$, voltage=american] (8, 7.25);
+	\draw (5.5, 7) to[generic, v=$v_4$, voltage=american] (5.5, 4.5);
+	\draw (10.5, 7) to[generic, v^=$2\text{V}$, voltage=american] (10.5, 4.5);
+	\draw (10.5, 9.5) to[generic, v=$v_2$, voltage=american] (10.5, 7);
+	\node[circ] at (8, 7){};
+	\node[circ] at (5.5, 7){};
+	\node[circ] at (8, 4.5){};
+	\node[circ] at (10.5, 7){};
+	\node[circ] at (8, 9.5){};
+	\draw (5.5, 9.5) to[generic, v^=$v_1$, voltage=american] (8, 9.5);
+	\draw (8, 9.5) to[short] (10.5, 9.5);
+	\draw (5.5, 9.5) to[short] (5.5, 7);
+	\draw (8, 4.5) to[short] (10.5, 4.5);
+	\draw (5.5, 4.5) to[short] (8, 4.5);
+	\draw (7.75, 7) to[short] (8.25, 7);
+	\draw (8, 7.25) -| (8, 6.75);
+\end{tikzpicture}
+
+	
+\end{center}	
+\label{fe1e2}
+\caption{Circuito di bipoli analizzato al punto \href{e1e2}}
+\end{figure}
 
 \subsubsection*{Soluzione esercizio \ref{e1e2}}
 
@@ -33,11 +100,60 @@
 \subsubsection{Esercizio 3 - }
 \label{e1e3}
 
+\begin{figure}[h!]
+\begin{center}
+
+\begin{tikzpicture}[transform shape]
+	\node[shape=rectangle, draw, line width=0.7pt, minimum width=2.975cm, minimum height=1.975cm] at (7.5, 9){};
+	\node[shape=rectangle, draw, line width=0.7pt, minimum width=0.975cm, minimum height=0.975cm] at (7.5, 6.75){};
+	\draw (4.75, 9.5) to[generic] (4.75, 6);
+	\draw (10.25, 9.5) to[generic] (10.25, 6);
+	\draw (4.75, 6) -| (4.75, 5.75);
+	\draw (10.25, 6) -| (10.25, 5.75);
+	\draw (4.75, 5.75) -- (10.25, 5.75);
+	\node[circ] at (7.5, 5.75){};
+	\draw (4.75, 9.5) to[short, i^>=$i_1$] (6, 9.5);
+	\draw (9, 9.5) to[short, i^<=$1\text{A}$] (10.25, 9.5);
+	\draw (5.5, 8.5) to[short, i^>=$2\text{A}$] (5.5, 6.75);
+	\draw (9.5, 8.5) to[short, i_>=$5\text{A}$] (9.5, 6.75);
+	\draw (5.5, 8.5) -- (6, 8.5);
+	\draw (9, 8.5) -- (9.5, 8.5);
+	\draw (9.5, 6.75) -- (8, 6.75);
+	\draw (7, 6.75) -- (5.5, 6.75);
+	\draw (7.5, 5.75) to[short, i^>=$i_2$] (7.5, 6.25);
+\end{tikzpicture}
+	
+\end{center}	
+\label{fe1e3}
+\caption{Circuito considerato al punto \href{e1e3}}
+\end{figure}
+
 \subsubsection*{Soluzione esercizio \ref{e1e3}}
 
 \vspace*{1.5cm}
 \subsubsection{Esercizio 4 - }
 \label{e1e4}
+
+\begin{figure}[h!]
+\begin{center}
+
+\begin{tikzpicture}[transform shape, american voltages]
+	\draw (7, 9.75) to[generic, v=$v_1$] (7, 7.25);
+	\draw (9.5, 9.75) to[generic, v^=$2\text{V}$] (9.5, 7.25);
+	\draw (7, 9.75) to[generic, v^=$6\text{V}$] (9.5, 9.75);
+	\draw (7, 7.25) to[generic, v=$5\text{V}$] (9.5, 7.25);
+	\draw (4.5, 9.75) to[generic, v^=$v_2$] (7, 9.75);
+	\draw (4.5, 7.25) to[generic, v<=$3\text{V}$] (7, 7.25);
+	\draw (4.5, 9.75) -- (4.5, 7.25);
+	\node[circ] at (7, 7.25){};
+	\node[circ] at (7, 9.75){};
+\end{tikzpicture}
+
+	
+\end{center}	
+\label{fe1e4}
+\caption{Circuito considerato al punto \href{e1e4}}
+\end{figure}
 
 \subsubsection*{Soluzione esercizio \ref{e1e4}}
 
@@ -50,6 +166,8 @@
 \vspace*{1.5cm}
 \subsubsection{Esercizio 6 - }
 \label{e1e6}
+
+ESEMPIO
 
 \subsubsection*{Soluzione esercizio \ref{e1e6}}
 
@@ -83,12 +201,16 @@
 
 \subsubsection*{Soluzione esercizio \ref{e1e11}}
 
+ESEMPIO
+
 \vspace*{1.5cm}
 \subsection{Esercitazione 1 - Extra}
 
 \vspace*{1.5cm}
 \subsubsection{Esercizio 1 - }
 \label{e1ee1}
+
+ESEMPIO
 
 \subsubsection*{Soluzione esercizio \ref{e1ee1}}
 
@@ -107,6 +229,8 @@
 \vspace*{1.5cm}
 \subsubsection{Esercizio 4 - }
 \label{e1ee4}
+
+ESEMPIO
 
 \subsubsection*{Soluzione esercizio \ref{e1ee4}}
 
