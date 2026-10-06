@@ -161,6 +161,41 @@ In questa prima esercitazione
 \subsubsection{Esercizio 5 - }
 \label{e1e5}
 
+\begin{figure}[h!]
+\begin{center}
+
+\begin{tikzpicture}[transform shape, american voltages]
+	\draw (7, 9.75) to[generic, v<=$5\text{V}$] (7, 7.25);
+	\draw (7, 9.75) to[generic] (9.5, 9.75);
+	\draw (4.5, 9.75) to[generic, v^=$5\text{V}$] (7, 9.75);
+	\draw (4.5, 7.25) to[generic, v=$v_2$] (7, 7.25);
+	\node[circ] at (7, 7.25){};
+	\node[circ] at (7, 9.75){};
+	\draw (2, 9.75) to[generic, v=$5\text{V}$] (2, 7.25);
+	\draw (2, 9.75) to[generic, v^=$v_1$] (4.5, 9.75);
+	\draw (4.5, 9.75) to[short] (4.5, 7.25);
+	\draw (2, 7.25) to[short] (4.5, 7.25);
+	\draw (9.5, 9.75) to[short] (9.5, 7.25);
+	\draw (7, 7.25) to[short] (9.5, 7.25);
+	\node[circ] at (4.5, 7.25){};
+	\node[circ] at (4.5, 9.75){};
+	\node[circ] at (9.5, 9.75){};
+	\node[circ] at (2, 9.75){};
+	\node[circ] at (4.5, 11.5){};
+	\node[circ] at (7, 11.5){};
+	\draw (2, 9.75) to[short] (2, 11);
+	\draw (2, 11) to[short] (4.5, 11.5);
+	\draw (9.5, 9.75) to[short] (9.5, 11);
+	\draw (9.5, 11) to[short] (7, 11.5);
+	\draw (4.5, 11.5) to[open, v=$v_3$] (7, 11.5);
+\end{tikzpicture}
+
+\end{center}	
+\label{fe1e5}
+\caption{Circuito considerato al punto \ref{e1e5}}
+\end{figure}
+
+
 \subsubsection*{Soluzione esercizio \ref{e1e5}}
 
 \vspace*{1.5cm}
@@ -175,11 +210,50 @@ ESEMPIO
 \subsubsection{Esercizio 7 - }
 \label{e1e7}
 
+\begin{figure}
+\begin{center}
+
+\begin{tikzpicture}[transform shape, american voltages]
+	\draw (3, 12) to[generic, i=$2\text{A}$] (6, 12);
+	\draw (3, 9) to[generic, v<=$6\text{V}$] (6, 9);
+	\draw (6, 12) to[generic] (6, 9);
+	\draw (3, 12) to[generic, v=$v$] (3, 9);
+	\node[shape=rectangle, minimum width=2.465cm, minimum height=1.465cm] at (7.25, 10.5){} node[anchor=center, align=center, text width=2.077cm, inner sep=6pt] at (7.25, 10.5){$p=10\text{W }$};
+\end{tikzpicture}
+
+\end{center}
+\label{fe1e7}
+\caption{Circuito considerato al punto \ref{e1e7}}	
+\end{figure}
+
 \subsubsection*{Soluzione esercizio \ref{e1e7}}
 
 \vspace*{1.5cm}
 \subsubsection{Esercizio 8 - }
 \label{e1e8}
+
+\begin{figure}
+\begin{center}
+
+\begin{tikzpicture}[transform shape, american voltages]
+	\draw (4, 13) to[generic, v^=$1\text{V}$] (8, 13);
+	\draw (4, 9) to[generic, v=$4\text{V}$, i^<=$4\text{A}$] (8, 9);
+	\draw (4, 9) to[generic, v^=$1\text{V}$] (4, 13);
+	\draw (8, 9) to[generic] (8, 13);
+	\draw (7, 10) to[generic, v^<=$v$, voltage/distance from node=0.8] (5, 12);
+	\node[shape=rectangle, minimum width=1.715cm, minimum height=1.215cm] at (9.125, 11){} node[anchor=center, align=center, text width=1.327cm, inner sep=6pt] at (9.125, 11){$p=4 \text{W}$};
+	\draw (4, 13) to[short, i^>=$i$] (5, 12);
+	\draw (7, 10) to[short] (8, 9);
+	\node[circ] at (4, 13){};
+	\node[circ] at (8, 9){};
+\end{tikzpicture}
+
+\end{center}
+\label{fe1e8}	
+\caption{Circuito considerato nel al punto \ref{e1e8}}
+\end{figure}
+
+
 
 \subsubsection*{Soluzione esercizio \ref{e1e8}}
 
