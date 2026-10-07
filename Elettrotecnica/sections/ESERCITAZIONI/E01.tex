@@ -12,19 +12,21 @@
 \section{Esercitazioni}
 \vspace*{1.5cm}
 
-In questa sezione vengono riportate gli esercizi ed i relativi svolgimenti delle esercitazioni svolte in aula durante le lezioni del corso. Ad ogni sottosezione corrisponde una diversa esercitazione. Le esercitazioni sono contrassegnate dalla data di svolgimento e dagli argomenti trattati all'interno di essa. Ogni esercitazione è ulteriormente divisa nel numero di esercizi svolti compresivi di titolo e spiegazione. In aggiunta agli esercizi visti a lezione vengono proposti esercizi trovati su libri di testo (indicati all'inizio di questo documento) e prontamente generati attraverso \href{https://autocircuits.org/autocir_run.php?q=shuffle}{AutoCircuits}.
+In questa sezione vengono riportate gli esercizi ed i relativi svolgimenti delle esercitazioni svolte in aula durante le lezioni del corso. Ad ogni sottosezione corrisponde una diversa esercitazione. Le esercitazioni sono contrassegnate dalla data di svolgimento e dagli argomenti trattati all'interno di essa. Ogni esercitazione è ulteriormente divisa nel numero di esercizi svolti compresivi di titolo e spiegazione. In aggiunta agli esercizi visti a lezione vengono proposti esercizi trovati su libri di testo (indicati all'inizio di questo documento) e prontamente generati attraverso \href{https://autocircuits.org/autocir_run.php?q=shuffle}{AutoCircuits}. Gli esercizi presenti e presi dalle esercitazioni svolte in classe fanno riferimento ai testi indicati nella bibliografia.
 
 
 \vspace*{1.5cm}
 \subsection{Esercitazione 1 - 01/10/2026}
 
 
-In questa prima esercitazione
+In questa prima esercitazione si vanno ad introdurre i concetti fondamentali visti nell'introduzione e nella prima lezione del corso. In particolare verranno trattate le leggi di Kirchhoff, KCL e KVL in aggiunta all'introduzione dei circuiti elettrici in corrente continua.
 
 
 \vspace*{1.5cm}
-\subsubsection{Esercizio 1 - }
+\subsubsection{Esercizio 1 - KCL}
 \label{e1e1}
+
+Ricavare le correnti incognite in \ref{fe1e1}:
 
 
 \begin{figure}[h!]
@@ -53,15 +55,78 @@ In questa prima esercitazione
 \end{tikzpicture}
 	
 \end{center}
-\label{fe1e1}
 \caption{Circuito di bipoli analizzato al punto \ref{e1e1}}
 \end{figure}
+\label{fe1e1}
+
 
 \subsubsection*{Soluzione esercizio \ref{e1e1}}
 
+Andiamo a risolvere questo esercizio utilizzando la formulazione delle KCL (Kirchhoff Current Law) la quale, in base alla formulazione, afferma che le la somma delle correnti entranti in un nodo é uguale a quella delle correnti uscenti indipendentemente dal loro valore numerico effettivo. Lo stesso vale, se collassata la legge, ad un solo bipolo: la corrente che entra in un terminale esce dall'altro.\\
+
+Ricordiamo che per tutto il testo le correnti entranti verrano prese con il segno negativo mentre quelle uscenti con il segno positivo, il lettore può adottare una convenzione opposta ma basta che la mantenga per tutto l'esercizio.\\
+
+Iniziamo analizzando il bipolo posto al centro, otteniamo che:
+
+\begin{equation}
+	\text{2A} + \text{4A} + i_2 - \text{1A} = 0
+\end{equation}
+
+Si ottiene che:
+
+\begin{equation}
+	i_2 = - \text{1A} - \text{2A} - \text{4A} \longrightarrow i_2 = - \text{7A}
+\end{equation}
+
+Procediamo analizzando il nodo in basso al centro per trovare $i_3$.
+Sapendo ora la corrente $i_2$ otteniamo che:
+
+\begin{equation}
+	i_3 + i_2 - \text{8A} = 0
+\end{equation}
+
+Si ottiene che:
+
+\begin{equation}
+	i_3 = \text{8A} - (- \text{7A}) \longrightarrow i_3 = \text{13A}
+\end{equation}
+
+Come possiamo vedere prendiamo sempre le correnti, con verso entrate nel nodo,  con segno positivo mentre lo invertiamo per le correnti uscenti. Questo ragionamento si applica di conseguenza al valore effettivo che abbiamo calcolato. Come appena visto la corrente $i_2$ era pari a $- \text{7A}$: essendo la corrente entrante nel nodo considerato dobbiamo invertire il suo segno come fatto nella formula.\\
+
+Procediamo ora analizzando il nodo alla sinistra del circuito, applichiamo KCL ottenendo che:
+
+\begin{equation}
+	\text{1A} - \text{8A} = -i_1
+\end{equation}
+
+Otteniamo che:
+
+\begin{equation}
+	i_1 = \text{8A} - \text{1A} \longrightarrow i_1 = \text{7A}  
+\end{equation}
+
+
+Procediamo infine analizzando uno dei due nodi non ancora toccati dalla nostra analisi, come possiamo notare al momento abbiamo scelto nodi aventi una sola incognita. Vedremo più avanti come il numero di nodi analizzabili ed il numero di correnti ignote sia fondamentale per l'analisi del circuito tramite matrici.
+
+Scegliamo di usare il nodo centrale in alto. Applicando KCL si ottiene che:
+
+\begin{equation}
+	i_4 - i_1 + \text{2A} = 0
+\end{equation}
+
+Otteniamo che:
+
+\begin{equation}
+	i_4 =  - \text{2A} +  \text{7A} \longrightarrow i_4 = \text{9A}  
+\end{equation}
+
+
+\newpage
 \vspace*{1.5cm}
-\subsubsection{Esercizio 2 - }
+\subsubsection{Esercizio 2 - KVL}
 \label{e1e2}
+
+Ricavare le tensioni incognite in \ref{fe1e2}
 
 \begin{figure}[h!]
 \begin{center}
@@ -90,15 +155,86 @@ In questa prima esercitazione
 
 	
 \end{center}	
-\label{fe1e2}
 \caption{Circuito di bipoli analizzato al punto \ref{e1e2}}
 \end{figure}
+\label{fe1e2}
 
 \subsubsection*{Soluzione esercizio \ref{e1e2}}
 
+Procediamo ora alla risoluzione di questo esercizio andando ad applicare KVL (Kirchhoff Voltage Law) ad una selezione di percorsi di bipoli (o maglie) al fine di calcolarne la tensione.\\
+
+Iniziamo scegliendo il bipolo con la tensione $v_1$ e il percorso relativo passante prima per il bipolo avente una tensione applicata di 3V e passando poi al bipolo con una tensione applicata di 5V chiudendo così il primo percorso.
+Richiamando la KVL la quale afferma che la somma delle tensioni su un percorso chiuso di bipoli é uguale a zero procediamo alla soluzione di questa maglia.\\
+
+Come visto per la KCL anche per la KVL utilizziamo la convenzione secondo cui le maglie o percorsi vengono seguiti in senso orario e prendendo con segno positivo le tensioni applicate incontrate con il simbolo $+$ mentre considereremo le tensioni applicate con segno opposto se il primo terminale che incontriamo ha segno negativo $-$. Ricordiamo che come nel caso precedente tale convenzione verrà adottata per tutto il testo, il lettore é comunque libero di utilizzare la sua inversa mantenendola però invariata per il corso dell'intero esercizio.\\
+
+Procedendo con la prima maglia si ottiene che:
+
+\begin{equation}
+	v_1 + \text{3V} - \text{5V} = 0
+\end{equation}
+
+Si ottiene che:
+
+\begin{equation}
+	v_1 = \text{2V}
+\end{equation}
+
+Procediamo considerando la maglia avente il bipolo con tensione applicata pari a $v_2$. Avremo che:
+
+\begin{equation}
+	v_2 + \text{2V} - \text{3V} = 0
+\end{equation}
+
+Si ottiene che:
+
+\begin{equation}
+	v_2 \longrightarrow \text{1V}
+\end{equation}
+
+Procediamo con la maglia che include il bipolo con tensione applicata pari a $v_3$. Si avrà che:
+
+\begin{equation}
+	-v_3 - \text{2V} + \text{2V} = 0
+\end{equation}
+
+Si ottiene che:
+
+\begin{equation}
+	v_3 = \text{0V}
+\end{equation}
+
+Infine consideriamo l'ultima maglia contenente il bipolo con tensione applicata ai sui capi pari a $v_4$. In questo caso consideriamo la maglia più piccola, si otterrebbero risultati equivalenti seguendo anche altri percorsi.\\
+
+Procediamo ottenendo che:
+
+\begin{equation}
+	-v_4 + \text{5V} + v_3 = 0
+\end{equation}
+
+Conoscendo ora la tensione $v_3$ otteniamo che:
+
+\begin{equation}
+	v_4 = \text{5V}
+\end{equation}
+
+Volendo si sarebbe potuto fare tutto il giro del circuito, si sarebbe ottenuto che:
+
+\begin{equation}
+	v_1 + v_2 + \text{2V} -v_4
+\end{equation}
+
+Sostituendo i termini noti e spostando i termini si ottiene che:
+
+\begin{equation}
+	\text{2V} + \text{1V} + \text{2V} = v_4 \longrightarrow v_4 = \text{5V}
+\end{equation}
+
 \vspace*{1.5cm}
-\subsubsection{Esercizio 3 - }
+\subsubsection{Esercizio 3 - KCL}
 \label{e1e3}
+
+Ricavare le correnti $i_1$ ed $i_2$ in \ref{fe1e3}
 
 \begin{figure}[h!]
 \begin{center}
@@ -124,15 +260,41 @@ In questa prima esercitazione
 \end{tikzpicture}
 	
 \end{center}	
-\label{fe1e3}
 \caption{Circuito considerato al punto \ref{e1e3}}
 \end{figure}
+\label{fe1e3}
 
 \subsubsection*{Soluzione esercizio \ref{e1e3}}
 
+Procediamo ora con la risoluzione dell'esercizio considerando dapprima il quadripolo in alto. Applichiamo ad esso la KCL com fatto in precedenza, si ottiene che:
+
+\begin{equation}
+	\text{2A} + \text{5A} - \text{1A} - i_1 = 0
+\end{equation}
+
+Si ottiene che:
+
+\begin{equation}
+	i_1 = \text{2A} + \text{5A} - \text{1A} \rightarrow i_1 = \text{6A}
+\end{equation}
+
+Procediamo applicando di nuovo la KCL al secondo nodo ora che conosciamo la corrente $i_1$. Otteniamo che:
+
+\begin{equation}
+	i_2 + i_1 + \text{1A} = 0
+\end{equation}
+
+Sostituendo si ottiene che:
+
+\begin{equation}
+	i_2 = - \text{1A} - \text{6A} \rightarrow i_2 = -\text{7A}
+\end{equation}
+
 \vspace*{1.5cm}
-\subsubsection{Esercizio 4 - }
+\subsubsection{Esercizio 4 - KVL}
 \label{e1e4}
+
+Ricavare le tensioni $v_1$ ed $v_2$ in \ref{fe1e4}
 
 \begin{figure}[h!]
 \begin{center}
@@ -151,15 +313,41 @@ In questa prima esercitazione
 
 	
 \end{center}	
-\label{fe1e4}
 \caption{Circuito considerato al punto \ref{e1e4}}
 \end{figure}
+\label{fe1e4}
 
 \subsubsection*{Soluzione esercizio \ref{e1e4}}
 
+Procediamo alla risoluzione dell'esercizio andando a considerare la maglia di destra dove le tensioni applicate ai bipoli sono tutte note tranne $v_1$, applicando la KVL si ottiene che:
+
+\begin{equation}
+	-v_1 + \text{6V} + \text{2V} - \text{5V} = 0
+\end{equation}
+
+Svolgendo i calcoli si ottiene che:
+
+\begin{equation}
+	v_1 = \text{6V} + \text{2V} - \text{5V} \rightarrow v_1 = \text{3V}
+\end{equation}
+
+Concluso il calcolo alla maglia proseguiamo con lo studio della maglia di sinistra. Applicando nuovamente la KVL otteniamo che:
+
+\begin{equation}
+	v_2 + v_1 + \text{3V} = 0
+\end{equation}
+
+Sostituendo i termini noti e spostando i termini al secondo membro otteniamo che:
+
+\begin{equation}
+	v_2 = - \text{3V} - \text{3V} \rightarrow v_2 = -\text{6V}
+\end{equation}
+
 \vspace*{1.5cm}
-\subsubsection{Esercizio 5 - }
+\subsubsection{Esercizio 5 - KVL}
 \label{e1e5}
+
+Ricavare le tensioni $v_1$, $v_2$ e $v_3$ in \autoref{fe1e5}
 
 \begin{figure}[h!]
 \begin{center}
@@ -191,26 +379,220 @@ In questa prima esercitazione
 \end{tikzpicture}
 
 \end{center}	
-\label{fe1e5}
 \caption{Circuito considerato al punto \ref{e1e5}}
+\label{fe1e5}
 \end{figure}
+
 
 
 \subsubsection*{Soluzione esercizio \ref{e1e5}}
 
+Procediamo alla soluzione dell'esercizio proposto. Come nei casi precedenti occorre applicare correttamente la KVL per trovare le tensioni incognite.\\
+
+Iniziamo dalla maglia centrale che risolviamo per trovare la tensione $v_2$:
+
+\begin{equation}
+	-v_2 + \text{5V} - \text{5V} = 0
+\end{equation}
+
+Otteniamo che:
+
+\begin{equation}
+	v_2 = \text{0V}
+\end{equation}
+
+Procediamo considerando la maglia si sinistra composta da solo due bipoli, si otterrà che:
+
+\begin{equation}
+	v_1 - \text{5V} = 0
+\end{equation}
+
+Ovvero che:
+
+\begin{equation}
+	v_1 = \text{5V}
+\end{equation}
+
+Come possiamo notare se in una maglia abbiamo solo due bipoli la tensione applicata sarà in valore assoluto uguale a quella nota con il segno dipendente dal verso dei bipoli.\\
+
+Procediamo ora calcolando la tensione $v_3$. Come possiamo notare la tensione incognita é la tensione applicata ai terminali di un bipolo che é detto circuito aperto e che dunque trattiamo come tutti gli altri bipoli.
+Possiamo procedere calcolando la tensione sul bipolo lasciato in bianco oppure facendo un percorso più lungo considerare il bipolo avente tensione $v_2$ ottenendo così:
+
+\begin{equation}
+	v_3 - v_2 - \text{5V} = 0
+\end{equation}
+
+Sostituendo si ha che:
+
+\begin{equation}
+	v_3 = \text{5V}
+\end{equation}
+
+In aggiunta si poteva calcolare in modo banale la tensione sul bipolo non considerato in quanto componente di una maglia con soli due elementi. In particolare disegnando la tensione applicata ad esso avente il terminale negativo $-$ condiviso con gli altri bipoli ed essendo dunque concorde in segno con l'altro elemento della maglia si sarebbe ottenuto che:
+
+\begin{equation}
+	-v_x + \text{5V} = 0
+\end{equation}
+
+Ovvero che:
+
+\begin{equation}
+	v_x = \text{5V}
+\end{equation}
+
+Ottenuto questo si sarebbe poi potuto calcolare $v_3$ passando per il bipolo con $v_1$ applicato ai suoi terminali:
+
+\begin{equation}
+	v_3 + v_x - \text{5V} - v_1 = 0
+\end{equation}
+
+Ottenendo che:
+
+\begin{equation}
+	v_3 = - \text{5V} + \text{5V} + \text{5V} \rightarrow v_3 = \text{5V}
+\end{equation}
+
+
 \vspace*{1.5cm}
-\subsubsection{Esercizio 6 - }
+\subsubsection{Esercizio 6 - Energia assorbita da un bipolo}
 \label{e1e6}
 
-ESEMPIO
+
+Calcolare l’energia assorbita da un bipolo, per $t > 0$, se la tensione e la corrente sono quelle indicate nella \autoref{fe1e6}  rispettivamente (si assumano versi coordinati).
+
+\begin{figure}[h!]
+\begin{center}
+
+\begin{tikzpicture}[transform shape, american voltages]
+	\draw[-latex] (2, 10) -- (2, 12);
+	\draw[line width=0.8pt] (2, 10) -- (3, 10);
+	\draw[line width=0.8pt] (3, 11) -- (5, 11);
+	\draw[line width=0.8pt] (5, 10) -- (7, 10);
+	\draw[line width=0.8pt, -latex] (5, 10) -- (7.25, 10);
+	\draw (3, 10) -- (5, 10);
+	\draw[dash pattern={on 1.6pt off 3.2pt}] (2, 11) -- (3, 11);
+	\draw[dash pattern={on 1.6pt off 3.2pt}] (3, 10) -- (3, 11);
+	\draw[dash pattern={on 1.6pt off 3.2pt}] (5, 10) -- (5, 11);
+	\node[shape=rectangle, minimum width=0.465cm, minimum height=0.465cm] at (2, 9.5){} node[anchor=center, align=center, text width=0.077cm, inner sep=6pt] at (2, 9.5){$0$};
+	\node[shape=rectangle, minimum width=0.465cm, minimum height=0.465cm] at (3, 9.5){} node[anchor=center, align=center, text width=0.077cm, inner sep=6pt] at (3, 9.5){$1$};
+	\node[shape=rectangle, minimum width=0.465cm, minimum height=0.465cm] at (4, 9.5){} node[anchor=center, align=center, text width=0.077cm, inner sep=6pt] at (4, 9.5){$2$};
+	\node[shape=rectangle, minimum width=0.465cm, minimum height=0.465cm] at (5, 9.5){} node[anchor=center, align=center, text width=0.077cm, inner sep=6pt] at (5, 9.5){$3$};
+	\draw (4, 10.125) -| (4, 10);
+	\node[shape=rectangle, minimum width=0.465cm, minimum height=0.465cm] at (7, 9.5){} node[anchor=center, align=center, text width=0.077cm, inner sep=6pt] at (7, 9.5){$t,s$};
+	\node[shape=rectangle, minimum width=0.465cm, minimum height=0.465cm] at (1.25, 11.875){} node[anchor=center, align=center, text width=0.077cm, inner sep=6pt] at (1.25, 11.875){$v,V$};
+	\node[shape=rectangle, minimum width=0.465cm, minimum height=0.465cm] at (1.5, 11){} node[anchor=center, align=center, text width=0.077cm, inner sep=6pt] at (1.5, 11){$1$};
+	\draw[-latex] (9, 10) -- (9, 13);
+	\draw[dash pattern={on 1.6pt off 3.2pt}] (9, 12) -- (11, 12);
+	\draw[dash pattern={on 1.6pt off 3.2pt}] (11, 10) -- (11, 12);
+	\node[shape=rectangle, minimum width=0.465cm, minimum height=0.465cm] at (9, 9.5){} node[anchor=center, align=center, text width=0.077cm, inner sep=6pt] at (9, 9.5){$0$};
+	\node[shape=rectangle, minimum width=0.465cm, minimum height=0.465cm] at (10, 9.5){} node[anchor=center, align=center, text width=0.077cm, inner sep=6pt] at (10, 9.5){$1$};
+	\node[shape=rectangle, minimum width=0.465cm, minimum height=0.465cm] at (11, 9.5){} node[anchor=center, align=center, text width=0.077cm, inner sep=6pt] at (11, 9.5){$2$};
+	\node[shape=rectangle, minimum width=0.465cm, minimum height=0.465cm] at (12, 9.5){} node[anchor=center, align=center, text width=0.077cm, inner sep=6pt] at (12, 9.5){$3$};
+	\draw (11, 10.125) -| (11, 10);
+	\node[shape=rectangle, minimum width=0.465cm, minimum height=0.465cm] at (14, 9.5){} node[anchor=center, align=center, text width=0.077cm, inner sep=6pt] at (14, 9.5){$t,s$};
+	\node[shape=rectangle, minimum width=0.465cm, minimum height=0.465cm] at (8.25, 12.875){} node[anchor=center, align=center, text width=0.077cm, inner sep=6pt] at (8.25, 12.875){$i,A$};
+	\node[shape=rectangle, minimum width=0.465cm, minimum height=0.465cm] at (8.5, 11){} node[anchor=center, align=center, text width=0.077cm, inner sep=6pt] at (8.5, 11){$1$};
+	\draw[-latex] (9, 10) -- (14.25, 10);
+	\draw (12, 10) -| (12, 10.125);
+	\node[shape=rectangle, minimum width=0.465cm, minimum height=0.465cm] at (8.5, 12){} node[anchor=center, align=center, text width=0.077cm, inner sep=6pt] at (8.5, 12){$2$};
+	\draw[line width=0.8pt] (9, 11) -- (12.25, 12.625);
+	\draw (10, 10) -| (10, 10.125);
+\end{tikzpicture}
+
+	
+\end{center}	
+\caption{Grafici di tensione e corrente relativi al punto \ref{e1e6}}
+\label{fe1e6}
+\end{figure}
+
 
 \subsubsection*{Soluzione esercizio \ref{e1e6}}
 
+
+Procediamo alla risoluzione dell'esercizio proposto ricordando che il prodotto tra la funzione di tensione $v(t)$ e corrente $i(t)$ é la potenza. Integrando nel tempo otteniamo l'energia.
+Ricordiamo inoltre che assumere versi coordinati significa utilizzare la convenzione degli utilizzatori.\\
+
+Procediamo ora all risoluzione dell'esercizio andando ad analizzare le funzioni di corrente e tensione come funzioni a tratti, otteniamo che:
+
+\begin{equation}
+v(t) = 
+\begin{cases}
+	0 & 0 \leq t < 1\\
+	1 & 0 \leq t < 3\\
+	0 & t \geq 3
+\end{cases}	
+\end{equation}
+
+Per quanto riguarda la corrente andiamo a derivare la sua espressione come la retta passante per due punti $(x_1, y_1) = (0,1)$ e $(x_2, y_2) = (2,2)$, otteniamo che:
+
+\begin{equation}
+	i(t) = \frac{t-x_1}{x_2 - x_1} - \frac{i - y_1}{y_2-y_1}
+\end{equation}
+
+Otteniamo che:
+
+\begin{equation}
+	i(t) = \frac{t}{2} + 1 \hspace{2cm} t \geq 0
+\end{equation}
+
+A questo punto ricaviamo la funzione $p(t)$ come $i(t) \cdot v(t)$, si ottiene che:
+
+\begin{equation}
+p(t) = 
+\begin{cases}
+	0 & 0 \leq t < 1\\
+	\frac{t}{2} + 1 & 0 \leq t < 3\\
+	0 & t \geq 3
+\end{cases}
+\end{equation}
+
+Possiamo ora calcolare, sempre a tratti il lavoro svolto (si é scelta $s$ come variabile di integrazione) nei tre intervalli di tempo così da poter calcolare l'energia totale assorbita dal bipolo, si ottiene che:
+
+\begin{equation}
+	w(0,t) = \int_0^t p(s)ds
+\end{equation}
+
+Analizzando i vari casi:
+
+\begin{equation}
+	w(0,t) = \int_0^1 p(s)ds + \int_1^3 p(s)ds + \int_3^t p(s)ds
+\end{equation}
+
+Vediamo il primo caso:
+
+\begin{equation}
+	\int_0^1 p(s)ds = \int_0^1 0 ds = 0
+\end{equation}
+
+Andiamo ora al terzo caso:
+
+\begin{equation}
+	\int_3^t p(s)ds = \int_3^t 0 ds = 0
+\end{equation}
+
+Infine analizzando il caso centrale:
+
+\begin{equation}
+	\int_1^3 p(s)ds = \int_1^3 \frac{s}{2} + 1 \;ds = \int_1^3 \frac{s}{2} \;ds + \int_1^3 1 \;ds = \frac{s^2}{4} \bigg|_1^3 + s \bigg|_1^3 
+\end{equation}
+
+Si ottiene che:
+
+\begin{equation}
+	\int_1^3 p(s)ds = \frac{9}{4} - \frac{1}{4} + 3 - 1 = 4 \unit{J}
+\end{equation}
+
+
+\newpage
 \vspace*{1.5cm}
-\subsubsection{Esercizio 7 - }
+\subsubsection{Esercizio 7 - KVL e potenza assorbita}
 \label{e1e7}
 
-\begin{figure}
+
+Ricavare la tensione $v$ in \autoref{fe1e7}. Si assuma che le potenze mostrate siano quelle assorbite dai bipoli.
+
+
+\begin{figure}[h!]
 \begin{center}
 
 \begin{tikzpicture}[transform shape, american voltages]
@@ -219,20 +601,57 @@ ESEMPIO
 	\draw (6, 12) to[generic] (6, 9);
 	\draw (3, 12) to[generic, v=$v$] (3, 9);
 	\node[shape=rectangle, minimum width=2.465cm, minimum height=1.465cm] at (7.25, 10.5){} node[anchor=center, align=center, text width=2.077cm, inner sep=6pt] at (7.25, 10.5){$p=10\text{W }$};
+	\node[shape=rectangle, minimum width=2.465cm, minimum height=1.465cm] at (7.25, 10.5){} node[anchor=center, align=center, text width=2.077cm, inner sep=6pt] at (4.75, 12.75){$p=2\text{W }$};
 \end{tikzpicture}
 
 \end{center}
-\label{fe1e7}
 \caption{Circuito considerato al punto \ref{e1e7}}	
+\label{fe1e7}
 \end{figure}
 
 \subsubsection*{Soluzione esercizio \ref{e1e7}}
 
+Procediamo ora alla risoluzione dell'esercizio proposto. Dato che stiamo trattando una tensione ci interesserà applicare la KVL all'intera maglia. Dato che non abbiamo tutte le tensioni le andiamo a calcolare dalle potenze assorbite dai bipoli.\\
+
+Iniziamo con il bipolo avente $p_x = 10$W assumendo che la tensione sia concorde alla corrente entrante dunque sul terminale positivo si ha che:
+
+\begin{equation}
+	p_x = v_y \cdot i_y
+\end{equation}
+
+Avremo che:
+
+\begin{equation}
+	10 \unit{W} = v_y \cdot 2\unit{A} \rightarrow v_y = 5 \unit{V}
+\end{equation}
+
+Possiamo fare los stesso con il bipolo la cui potenza é pari a $p_x = 2$W, si ottiene che:
+
+\begin{equation}
+	2 \unit{W} = v_x \cdot 2\unit{A} \rightarrow v_y = 1 \unit{V}
+\end{equation}
+
+Ottenute a questo punto tutte le tensioni possiamo applicare la KVL per trovare $v$:
+
+\begin{equation}
+	-v + v_x + v_y + 6\unit{V} = 0
+\end{equation}
+
+Otteniamo infine che:
+
+\begin{equation}
+	v = v_x + v_y + 6\unit{V} \rightarrow v = 12\unit{V}
+\end{equation}
+
+
+
 \vspace*{1.5cm}
-\subsubsection{Esercizio 8 - }
+\subsubsection{Esercizio 8 - KVL e KCL}
 \label{e1e8}
 
-\begin{figure}
+Ricavare la tensione $v$ e la corrente $i$ in \autoref{fe1e8}. Verificare inoltre la conservazione della potenza.
+
+\begin{figure}[h!]
 \begin{center}
 
 \begin{tikzpicture}[transform shape, american voltages]
@@ -249,16 +668,77 @@ ESEMPIO
 \end{tikzpicture}
 
 \end{center}
-\label{fe1e8}	
 \caption{Circuito considerato nel al punto \ref{e1e8}}
+\label{fe1e8}	
 \end{figure}
-
 
 
 \subsubsection*{Soluzione esercizio \ref{e1e8}}
 
+Procediamo alla risoluzione dell'esercizio. Come prima cosa notiamo che le tensioni e le correnti non disegnate non sono per forza nulla ma possono avere un verso assegnato da noi al fine di calcolarle applicando le dovute regole, KVL e KCL, ai relativi nodi o bipoli.\\
+
+Iniziamo applicando KVL alla maglia grande per trovare la tensione ai capi del bipolo la cui potenza assorbita é nota e pari a 4W. Assumendo il terminale positivo posto in alto si ottiene che:
+
+\begin{equation}
+	v_x - 4\unit{V} + 1\unit{V} + 1\unit{V} = 0
+\end{equation}
+
+Otteniamo che:
+
+\begin{equation}
+	v_x = 2\unit{V}
+\end{equation}
+
+Ottenuta la tensione applicata al bipolo e nota la sua potenza assorbita andiamo a calcolare la corrente che scorre al suo interno:
+
+\begin{equation}
+	i_x = \frac{p}{v_x} = \frac{4\unit{W}}{2\unit{V}} = 2\unit{A}
+\end{equation}
+
+Ottenuta la corrente $i_x$ possiamo utilizzarla all'interno della KCL al nodo in basso a destra, si ottiene che:
+
+\begin{equation}
+	4\unit{A} - i - i_x = 0
+\end{equation}
+
+Sostituendo si ottiene che:
+
+\begin{equation}
+	i = 4\unit{A} - 2\unit{A} = 2\unit{A}
+\end{equation}
+
+Il segno di $i_x$ nella KCL é stato scelto negativo in quanto la corrente é entrante nel terminale positivo del bipolo di cui conosciamo solo la potenza. Essendo la potenza assorbita ed utilizzando la convenzione dei generatori la corrente sarà dunque entrante il nodo in basso a destra dunque deve essere presa con segno negativo.\\
+
+Procediamo ora calcolando la tensione $v$ applicando la KVL alla maglia triangolare inferiore, si ottiene che:
+
+\begin{equation}
+	v - 4\unit{V} + 1\unit{V} = 0  
+\end{equation}
+
+Svolgendo i calcoli si ha che $v = 3\unit{V}$.\\
+
+Possiamo ora andare a calcolare la potenza di tutti i bipoli e stabilire se la conservazione della potenza ovvero che la somma di tutte le potenze sia pari a zero. Indicando i bipoli con i numeri da 1 a 4 partendo da quello in alto e seguendo un senso orario di numerazione avremo che:
+
+\begin{equation}
+\begin{aligned}
+	p_1 &= 1\unit{V} \cdot 2\unit{A} = 2\unit{W} \\
+	p_1 &= 4\unit{W} \\
+	p_3 &= 4\unit{V} \cdot - 4\unit{A} = -16\unit{W} \\
+	p_4 &= 1\unit{V} \cdot 2\unit{A} = 2\unit{W} \\
+	p_{diag} = p_5 &= 3\unit{V} \cdot 2\unit{A} = 6\unit{W} \\
+\end{aligned}
+\end{equation}
+
+Verifichiamo ora che:
+
+\begin{equation}
+	\sum_{n=1}^5 p_n = 2\unit{W} + 4\unit{W} -16\unit{W} +  2\unit{W} +  6\unit{W} = 0
+\end{equation}
+
+
+
 \vspace*{1.5cm}
-\subsubsection{Esercizio 9 - }
+\subsubsection{Esercizio 9 - Conservazione della potenza}
 \label{e1e9}
 
 \subsubsection*{Soluzione esercizio \ref{e1e9}}
